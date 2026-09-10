@@ -7,6 +7,15 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). While on
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-09-10
+
+### Changed
+
+- `export` now emits `export KEY='value'` shell statements instead of bare
+  `KEY=value` lines, so `eval "$(tiroir export)"` applies the store directly
+  into the current shell. Values are single-quoted to survive spaces and
+  metacharacters. Breaking on 0.x because the output contract changed.
+
 ## [0.1.0] — 2026-09-10
 
 ### Added

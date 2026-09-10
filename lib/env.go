@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 )
 
 // EnvStore reads and writes the encrypted variable store for an invoking user.
@@ -60,7 +61,9 @@ func (s *EnvStore) List() ([]string, error) {
 	return keys, nil
 }
 
-// Export returns the store as "KEY=value" lines, one per key, sorted by key.
+// Export returns shell statements that export every key, sorted by key, so a
+// shell eval'ing the output applies the store directly into its own environment.
+// Values are single-quoted so eval survives spaces and metacharacters.
 func (s *EnvStore) Export() ([]string, error) {
 	vals, err := s.read()
 	if err != nil {
@@ -68,7 +71,7 @@ func (s *EnvStore) Export() ([]string, error) {
 	}
 	out := make([]string, 0, len(vals))
 	for k := range vals {
-		out = append(out, k+"="+vals[k])
+		out = append(out, "export "+k+"='"+strings.ReplaceAll(vals[k], "'", "'\\''")+"'")
 	}
 	sort.Strings(out)
 	return out, nil

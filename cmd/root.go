@@ -12,8 +12,8 @@ var Version = "dev"
 
 var rootCmd = &cobra.Command{
 	Use:     "tiroir",
-	Short:   "Encrypted env store for sandboxed VMs",
-	Long:    `tiroir keeps shell variables encrypted at rest and lets a VM shell source them at login.`,
+	Short:   "Encrypted env manager applied into a shell",
+	Long:    `tiroir keeps shell variables encrypted at rest; 'tiroir export' emits export statements a shell applies into the current environment.`,
 	Version: Version,
 	SilenceUsage:  true,
 	SilenceErrors: true,

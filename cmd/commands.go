@@ -76,7 +76,7 @@ var deleteCmd = &cobra.Command{
 
 var exportCmd = &cobra.Command{
 	Use:   "export",
-	Short: "Print the store as KEY=value lines",
+	Short: "Apply the store to the current shell",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		s, err := store()

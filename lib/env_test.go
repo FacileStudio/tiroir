@@ -106,14 +106,14 @@ func TestExportSorted(t *testing.T) {
 	if err := s.Set("Z", "zz"); err != nil {
 		t.Fatalf("set z: %v", err)
 	}
-	if err := s.Set("A", "1"); err != nil {
+	if err := s.Set("A", "it's"); err != nil {
 		t.Fatalf("set a: %v", err)
 	}
 	lines, err := s.Export()
 	if err != nil {
 		t.Fatalf("export: %v", err)
 	}
-	want := []string{"A=1", "Z=zz"}
+	want := []string{"export A='it'\\''s'", "export Z='zz'"}
 	if len(lines) != 2 || lines[0] != want[0] || lines[1] != want[1] {
 		t.Fatalf("export = %v; want %v", lines, want)
 	}
