@@ -7,6 +7,16 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). While on
 
 ## [Unreleased]
 
+## [0.2.1] — 2026-10-13
+
+### Fixed
+
+- `set KEY VALUE` accepts a value that starts with `-` again. pflag parsed
+  interspersed flags by default, so `tiroir set TOKEN -abc` died with `unknown
+  shorthand flag: 'a' in -abc` before the command ran — quoting the value in
+  the shell made no difference, because the dash reached pflag either way. Flag
+  parsing now stops at the first positional argument.
+
 ## [0.2.0] — 2026-09-10
 
 ### Changed

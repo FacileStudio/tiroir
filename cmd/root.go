@@ -34,7 +34,13 @@ func store() (*env.EnvStore, error) {
 	return env.New()
 }
 
+// init builds the command tree. `set` gets non-interspersed flag parsing so
+// that `set KEY VALUE` accepts a VALUE starting with a dash: pflag would
+// otherwise read `-value` as an unknown flag and reject it before the command
+// runs, however the shell quoted it. `tiroir set -- KEY -value` still covers a
+// key that itself starts with a dash.
 func init() {
 	rootCmd.SetVersionTemplate("{{.Name}} {{.Version}}\n")
+	setCmd.Flags().SetInterspersed(false)
 	rootCmd.AddCommand(getCmd, setCmd, listCmd, deleteCmd, exportCmd)
 }
