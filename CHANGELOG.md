@@ -7,6 +7,10 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). While on
 
 ## [Unreleased]
 
+### Added
+
+- tiroir is released under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).
+
 ## [0.2.1] — 2026-10-13
 
 ### Fixed
