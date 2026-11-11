@@ -7,6 +7,14 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). While on
 
 ## [Unreleased]
 
+## [0.2.3] — 2026-11-11
+
+### Fixed
+
+- The release workflow reads the Go version from `go.mod`, so GoReleaser builds
+  with 1.26.11. The v0.2.2 tag failed to publish because the runner's cached
+  1.26 was 1.26.10.
+
 ## [0.2.2] — 2026-11-11
 
 ### Added
