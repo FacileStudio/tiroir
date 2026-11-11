@@ -7,9 +7,16 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). While on
 
 ## [Unreleased]
 
+## [0.2.2] — 2026-11-11
+
 ### Added
 
 - tiroir is released under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).
+
+### Fixed
+
+- Build with Go 1.26.11, which carries the standard-library and toolchain
+  security fixes released since 1.26.0.
 
 ## [0.2.1] — 2026-10-13
 
